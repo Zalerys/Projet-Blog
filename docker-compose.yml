@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - '2020:80'
+        volumes:
+            - ./src:/var/www/html
+
+    db:
+        image: 'postgres' 
+        command: --default-authentication-plugin=mysql_native_password 
+        restart: always
+        ports: 
+          - '1010:1010'
+        environment:
+          POSTGRES_DB: blog
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: password
+        volumes:
+            - ./postgres/blog.sql:/docker-entrypoint-initdb.d/blog.sql
+
+
