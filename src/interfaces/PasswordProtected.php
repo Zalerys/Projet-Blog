@@ -7,5 +7,5 @@ interface PasswordProtected
     public function getHashedPassword(string $password);
 
 
-    //public function matchPassword():bool;
+    public function matchPassword(string $password, string $hash):bool;
 }

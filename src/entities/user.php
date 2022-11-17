@@ -100,9 +100,12 @@ class User extends Model implements PasswordProtected
         return $this;
     }
 
-    public function matchPassword(): bool
+    public function matchPassword($password , $hash): bool
     {
-        return true;
+        if (password_verify($password,$hash)){
+            return true;
+        }else {
+            return false;
+        }
     }
-
 }
