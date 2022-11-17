@@ -2,7 +2,11 @@
 
 namespace entities;
 
-class User extends Model
+use interfaces\PasswordProtected;
+
+
+
+class User extends Model implements PasswordProtected
 {
     private string $role_id;
     private string $name;
@@ -88,6 +92,17 @@ class User extends Model
     {
         $this->birthdate = $birthdate;
         return $this;
+    }
+
+    public function getHashedPassword(string $password)
+    {
+        $this->password = password_hash($password, PASSWORD_DEFAULT); 
+        return $this;
+    }
+
+    public function matchPassword(): bool
+    {
+        return true;
     }
 
 }
