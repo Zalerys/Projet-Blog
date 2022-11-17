@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace entities;
 
@@ -21,12 +21,12 @@ class Article extends model
         return $this;
     }
 
-    public function getAuthorid(): string
+    public function getAuthorId(): string
     {
         return $this->author_id;
     }
 
-    public function setAuthorid(string $author_id): Article
+    public function setAuthorId(string $author_id): Article
     {
         $this->author_id = $author_id;
         return $this;
@@ -54,12 +54,12 @@ class Article extends model
         return $this;
     }
     
-    public function getDatetime(): string
+    public function getDateTime(): string
     {
         return $this->datetime;
     }
 
-    public function setDatetime(string $datetime): Article
+    public function setDateTime(string $datetime): Article
     {
         $this->datetime = $datetime;
         return $this;
