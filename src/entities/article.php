@@ -4,22 +4,10 @@ namespace entities;
 
 class Article extends model
 {
-    private string  $id;
     private string $author_id;
     private string $title;
     private string $content;
     private ?string $datetime;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function setId(string $id): Article
-    {
-        $this->id = $id;
-        return $this;
-    }
 
     public function getAuthorId(): string
     {
