@@ -64,7 +64,6 @@ class Article extends model
         $this->id = $id;
         return $this;
     }
-
 }
 
 
