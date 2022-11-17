@@ -1,10 +1,9 @@
-<?
+<?php
 
 namespace entities;
 
 class User extends Model
 {
-    private string $id;
     private string $role_id;
     private string $name;
     private string $email;
@@ -12,4 +11,83 @@ class User extends Model
     private ?string $datetime;
     private ?string $profile_picture;
     private ?string $birthdate;
+
+
+    public function getRoleId(): string
+    {
+        return $this->role_id;
+    }
+
+    public function setRoleId(string $role_id): User
+    {
+        $this->role_id = $role_id;
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): User
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): User
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+        public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function getDatetime(): string
+    {
+        return $this->datetime;
+    }
+
+    public function setDatetime(string $datetime): User
+    {
+        $this->datetime = $datetime;
+        return $this;
+    }   
+    
+    public function getProfilePicture(): string
+    {
+        return $this->profile_picture;
+    }
+
+    public function setProfilePicture(string $profile_picture): User
+    {
+        $this->profile_picture = $profile_picture;
+        return $this;
+    }
+
+    public function getBirthdate(): string
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(string $birthdate): User
+    {
+        $this->birthdate = $birthdate;
+        return $this;
+    }
+
 }
