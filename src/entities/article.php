@@ -10,58 +10,58 @@ class Article extends model
     private string $content;
     private ?string $datetime;
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function setId(int $id): Article
+    public function setId(string $id): Article
     {
         $this->id = $id;
         return $this;
     }
 
-    public function getAuthorid(): int
+    public function getAuthorid(): string
     {
-        return $this->id;
+        return $this->author_id;
     }
 
-    public function setAuthorid(int $id): Article
+    public function setAuthorid(string $author_id): Article
     {
-        $this->id = $id;
+        $this->author_id = $author_id;
         return $this;
     }
 
-    public function getTitle(): int
+    public function getTitle(): string
     {
-        return $this->id;
+        return $this->title;
     }
 
-    public function setTitle(int $id): Article
+    public function setTitle(string $title): Article
     {
-        $this->id = $id;
+        $this->title = $title;
         return $this;
     }
 
-    public function getContent(): int
+    public function getContent(): string
     {
-        return $this->id;
+        return $this->content;
     }
 
-    public function setContent(int $id): Article
+    public function setContent(string $content): Article
     {
-        $this->id = $id;
+        $this->content = $content;
         return $this;
     }
     
-    public function getDatetime(): int
+    public function getDatetime(): string
     {
-        return $this->id;
+        return $this->datetime;
     }
 
-    public function setDatetime(int $id): Article
+    public function setDatetime(string $datetime): Article
     {
-        $this->id = $id;
+        $this->datetime = $datetime;
         return $this;
     }
 }
