@@ -1,6 +1,6 @@
 <?php
 
-namespace interfaces;
+namespace App\Interfaces;
 
 interface PasswordProtected 
 {

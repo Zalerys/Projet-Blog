@@ -1,6 +1,9 @@
 <?php
+namespace App\Factory;
 
-use interfaces\Database;
+include './src/interfaces/Database.php';
+
+use App\Interfaces\Database;
 
 class PdoFactory implements Database
 {

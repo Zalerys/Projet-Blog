@@ -1,11 +1,11 @@
 <?php
 
-namespace entities;
+namespace App\Entities;
 
-class Comment extends BaseEntity
+Class ResponseToComment extends BaseEntity
 {
     private string $author_id;
-    private string $article_id; 
+    private string $comment_id;
     private string $datetime;
     private string $content;
 
@@ -23,29 +23,29 @@ class Comment extends BaseEntity
      * @param string $author_id
      * @return $this
      */
-    public function setAuthorId(string $author_id): Comment
+    public function setAuthorId(string $author_id): ResponseToComment
     {
         $this->author_id = $author_id;
         return $this;
     }
 
     /**
-     * Get the article id.
+     * Get the comment id.
      * @return string
      */
-    public function getArticleId(): string
+    public function getCommentId(): string
     {
-        return $this->article_id;
+        return $this->comment_id;
     }
 
     /**
-     * Set the article id.
-     * @param string $article_id
+     * Set the comment id.
+     * @param string $comment_id
      * @return $this
      */
-    public function setArticleId(string $article_id): Comment
+    public function setCommentId(string $comment_id): ResponseToComment
     {
-        $this->article_id = $article_id;
+        $this->comment_id = $comment_id;
         return $this;
     }
 
@@ -63,7 +63,7 @@ class Comment extends BaseEntity
      * @param string $datetime
      * @return $this
      */
-    public function setDatetime(string $datetime): Comment
+    public function setDatetime(string $datetime): ResponseToComment
     {
         $this->datetime = $datetime;
         return $this;
@@ -83,10 +83,9 @@ class Comment extends BaseEntity
      * @param string $content
      * @return $this
      */
-    public function setContent(string $content): Comment
+    public function setContent(string $content): ResponseToComment
     {
         $this->content = $content;
         return $this;
     }
 }
-

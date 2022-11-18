@@ -8,7 +8,7 @@ services:
         ports:
             - '2020:80'
         volumes:
-            - ./src:/var/www/html
+            - ./app:/var/www/html
 
     db:
         image: postgres
