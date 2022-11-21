@@ -10,7 +10,7 @@ class ArticlesManager extends BaseManager
      */
     public function getAllArticles(): array
     {
-        $query = $this->db->query('SELECT * FROM articles');
+        $query = $this->pdo->query('SELECT * FROM articles');
         $articles = [];
 
         while ($data = $query->fetch(\PDO::FETCH_ASSOC)) $articles[] = new Article($data);
@@ -25,9 +25,9 @@ class ArticlesManager extends BaseManager
      */
     public function getArticleById(string $id): ?Article
     {
-        $query = $this->db->prepare('SELECT * FROM articles WHERE id = :id');
+        $query = $this->pdo->prepare('SELECT * FROM articles WHERE id = :id');
         $query->bindValue('id', $id, \PDO::PARAM_STR);
-        $query-execute();
+        $query->execute();
         $data = $query->fetch(\PDO::FETCH_ASSOC);
 
         if ($data)
@@ -40,7 +40,7 @@ class ArticlesManager extends BaseManager
 
     public function postArticle(Article $article)
     {
-        $query = $this->db->prepare(<<<EOT
+        $query = $this->pdo->prepare(<<<EOT
             INSERT INTO articles (author_id, title, datetime, content) 
             VALUES (:author_id, :title, :datetime, :content)
         EOT);

@@ -9,6 +9,6 @@ abstract class BaseManager
 
     public function __construct(Database $db)
     {
-        $this->db = $db->getPostgresPDO();
+        $this->pdo = $db->getPostgresPDO();
     }
 }
