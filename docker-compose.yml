@@ -8,19 +8,17 @@ services:
         ports:
             - '2020:80'
         volumes:
-            - ./app:/var/www/html
+            - ./src:/var/www/html
 
     db:
-        image: postgres
+        image: 'postgres'
         restart: always
-        ports:
-          - '1010:5432'
         environment:
           POSTGRES_DB: blog
           POSTGRES_USER: root
           POSTGRES_PASSWORD: password
         volumes:
-            - ./database/blog.sql:/docker-entrypoint-initdb.d/blog.sql
+            - ./postgres/blog.sql:/docker-entrypoint-initdb.d/blog.sql
 
     adminer:
       image: adminer
