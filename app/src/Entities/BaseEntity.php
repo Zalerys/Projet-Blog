@@ -1,10 +1,17 @@
 <?php
 
-namespace App\Entities;
+include '../Traits/Hydrator.php';
 
 abstract class BaseEntity
 {
+    use Hydrator;
+
     protected string $id;
+
+    public function __construct(array $data = [])
+    {
+        $this->hydrate($data);
+    }
 
     /**
      * Get the id.

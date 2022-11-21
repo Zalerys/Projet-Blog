@@ -1,5 +1,7 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE IF NOT EXISTS "roles" (
-    "id" VARCHAR(255) NOT NULL UNIQUE,
+    "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
     "name" VARCHAR(255) NOT NULL,
     CONSTRAINT "roles_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -7,7 +9,7 @@ CREATE TABLE IF NOT EXISTS "roles" (
 );
 
 CREATE TABLE IF NOT EXISTS "users" (
-    "id" VARCHAR(255) NOT NULL UNIQUE,
+    "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
     "role_id" VARCHAR(20) NOT NULL,
     "email" VARCHAR(255) NOT NULL UNIQUE,
     "name" VARCHAR(20) NOT NULL,
@@ -21,7 +23,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 );
 
 CREATE TABLE IF NOT EXISTS "articles" (
-    "id" VARCHAR(255) NOT NULL UNIQUE,
+    "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
     "author_id" VARCHAR(255) NOT NULL,
     "title" VARCHAR(50) NOT NULL UNIQUE,
     "datetime" TIMESTAMP NOT NULL,
@@ -32,7 +34,7 @@ CREATE TABLE IF NOT EXISTS "articles" (
 );
 
 CREATE TABLE IF NOT EXISTS "comments" (
-    "id" VARCHAR(255) NOT NULL UNIQUE,
+    "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
     "author_id" VARCHAR(255) NOT NULL,
     "article_id" VARCHAR(255) NOT NULL,
     "datetime" TIMESTAMP NOT NULL,
@@ -43,7 +45,7 @@ CREATE TABLE IF NOT EXISTS "comments" (
 );
 
 CREATE TABLE IF NOT EXISTS "responses_to_comment" (
-    "id" VARCHAR(255) NOT NULL UNIQUE,
+    "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
     "author_id" VARCHAR(255) NOT NULL,
     "comment_id" VARCHAR(255) NOT NULL,
     "datetime" TIMESTAMP NOT NULL,

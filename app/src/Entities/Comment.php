@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+include './BaseEntity.php';
 
 class Comment extends BaseEntity
 {
