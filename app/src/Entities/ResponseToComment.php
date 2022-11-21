@@ -1,6 +1,6 @@
 <?php
 
-include './BaseEntity.php';
+namespace App\Entities;
 
 Class ResponseToComment extends BaseEntity
 {

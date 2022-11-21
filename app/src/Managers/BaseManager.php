@@ -1,6 +1,6 @@
 <?php
 
-include '../Interfaces/Database.php';
+use App\Interfaces\Database;
 
 abstract class BaseManager
 {

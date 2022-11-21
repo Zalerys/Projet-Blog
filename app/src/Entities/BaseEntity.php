@@ -1,6 +1,8 @@
 <?php
 
-include '../Traits/Hydrator.php';
+namespace App\Entities;
+
+use App\Traits\Hydrator;
 
 abstract class BaseEntity
 {

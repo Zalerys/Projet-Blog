@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Traits;
+
 trait Hydrator
 {
     public function hydrate(array $data): void

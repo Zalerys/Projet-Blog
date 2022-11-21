@@ -1,7 +1,8 @@
 <?php
 
-include './BaseEntity.php';
-include '../Interfaces/PasswordProtected.php';
+namespace App\Entities;
+
+use App\Interfaces\PasswordProtected;
 
 class User extends BaseEntity
 {

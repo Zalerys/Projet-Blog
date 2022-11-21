@@ -1,7 +1,6 @@
 <?php
 
-include './BaseManager.php';
-include '../Entities/Article.php';
+use App\Entities\Article;
 
 class ArticlesManager extends BaseManager
 {
