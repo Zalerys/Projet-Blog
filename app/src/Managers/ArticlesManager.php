@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Manager;
+
 use App\Entities\Article;
 
 class ArticlesManager extends BaseManager
