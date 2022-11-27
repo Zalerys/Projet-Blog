@@ -4,11 +4,12 @@ namespace App\Manager;
 
 use App\Entity\Article;
 
-/**
- *
- */
 class ArticleManager extends BaseManager
 {
+    /**
+     * @param Article $article
+     * @return void
+     */
     public function postArticle(Article $article): void
     {
         $query = $this->pdo->prepare(<<<EOT
@@ -20,6 +21,7 @@ class ArticleManager extends BaseManager
         $query->bindValue('content', $article->getContent(), \PDO::PARAM_STR);
         $query->execute();
     }
+
     /**
      * @return Article[]
      */
