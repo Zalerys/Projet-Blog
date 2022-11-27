@@ -20,6 +20,7 @@ class ArticleManager extends BaseManager
         $query->bindValue('content', $article->getContent(), \PDO::PARAM_STR);
         $query->execute();
     }
+    
     /**
      * @return Article[]
      */
