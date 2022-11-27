@@ -74,6 +74,4 @@ class Post extends BaseEntity
     {
         return $this->datetime;
     }
-
-
 }
