@@ -61,6 +61,10 @@ class CommentManager extends BaseManager {
         $query->bindValue('id', $comment->getId(), \PDO::PARAM_STR);
     }
 
+    /**
+     * @param string $id
+     * @return void
+     */
     public function deleteComment(string $id): void
     {
         $query = $this->pdo->prepare('DELETE FROM comments WHERE id = :id');
