@@ -4,25 +4,25 @@ namespace App\Entity;
 
 class ResponseToComment extends BaseEntity
 {
-    private int $id;
+    private string $id;
     private string $content;
-    private int $comment_id;
-    private int $author_id;
+    private string $comment_id;
+    private string $author_id;
     private string $datetime;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return ResponseToComment
      */
-    public function setId(int $id): ResponseToComment
+    public function setId(string $id): ResponseToComment
     {
         $this->id = $id;
         return $this;
@@ -47,36 +47,36 @@ class ResponseToComment extends BaseEntity
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getCommentId(): int
+    public function getCommentId(): string
     {
         return $this->comment_id;
     }
 
     /**
-     * @param int $comment_id
+     * @param string $comment_id
      * @return ResponseToComment
      */
-    public function setCommentId(int $comment_id): ResponseToComment
+    public function setCommentId(string $comment_id): ResponseToComment
     {
         $this->comment_id = $comment_id;
         return $this;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getAuthorId(): int
+    public function getAuthorId(): string
     {
         return $this->author_id;
     }
 
     /**
-     * @param int $author_id
+     * @param string $author_id
      * @return ResponseToComment
      */
-    public function setAuthorId(int $author_id): ResponseToComment
+    public function setAuthorId(string $author_id): ResponseToComment
     {
         $this->author_id = $author_id;
         return $this;

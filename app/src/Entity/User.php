@@ -7,64 +7,46 @@ use App\Interfaces\UserInterface;
 
 class User extends BaseEntity implements UserInterface, PasswordProtectedInterface
 {
-    private ?int $id;
+    private string $id;
     private string $name;
     private string $password;
     private string $email;
-    private array $roles = [];
+    private string $role_id;
     private string $datetime;
     private ?string $profile_picture;
     private ?string $birthdate;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getUserId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return User
      */
-    public function setUserId(int $id): User
+    public function setId(string $id): User
     {
         $this->id = $id;
-        return $this;
-    }
-
-        /**
-     * @return int
-     */
-    public function getUserPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param int $id
-     * @return User
-     */
-    public function setUserPassword(string $password): User
-    {
-        $this->password = $password;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getUserName(): string
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @param string $username
+     * @param string $name
      * @return User
      */
-    public function setUsername(string $name): User
+    public function setName(string $name): User
     {
         $this->name = $name;
         return $this;
@@ -73,7 +55,25 @@ class User extends BaseEntity implements UserInterface, PasswordProtectedInterfa
     /**
      * @return string
      */
-    public function getUserEmail(): string
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     * @return User
+     */
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -82,64 +82,84 @@ class User extends BaseEntity implements UserInterface, PasswordProtectedInterfa
      * @param string $email
      * @return User
      */
-    public function setUserEmail(string $email): User
+    public function setEmail(string $email): User
     {
         $this->email = $email;
         return $this;
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getRoles(): array
+    public function getRoleId(): string
     {
-        $roles = $this->roles;
-        $roles[] = "ROLE_USER";
-        return $roles;
+        return $this->role_id;
     }
 
     /**
-     * @param array $roles
+     * @param string $role_id
      * @return User
      */
-    public function setRoles(array $roles): User
+    public function setRoleId(string $role_id): User
     {
-        $this->roles = $roles;
+        $this->role_id = $role_id;
         return $this;
     }
 
-    public function getUserDate(): string
+    /**
+     * @return string
+     */
+    public function getDatetime(): string
     {
         return $this->datetime;
     }
 
-    public function setUserDate(string $datetime): User
+    /**
+     * @param string $datetime
+     * @return User
+     */
+    public function setDatetime(string $datetime): User
     {
         $this->datetime = $datetime;
         return $this;
     }
 
-    public function getUserProfilPicture(): string
+    /**
+     * @return string|null
+     */
+    public function getProfilePicture(): ?string
     {
         return $this->profile_picture;
     }
 
-    public function setUserProfilPicutre(string $profile_picture): User
+    /**
+     * @param string|null $profile_picture
+     * @return User
+     */
+    public function setProfilePicture(?string $profile_picture): User
     {
         $this->profile_picture = $profile_picture;
         return $this;
     }
 
-    public function getUserBirthdate(): string
+    /**
+     * @return string|null
+     */
+    public function getBirthdate(): ?string
     {
         return $this->birthdate;
     }
 
-    public function setUserBirthdate(string $birthdate): User
+    /**
+     * @param string|null $birthdate
+     * @return User
+     */
+    public function setBirthdate(?string $birthdate): User
     {
         $this->birthdate = $birthdate;
         return $this;
     }
+
 
     public function getHashedPassword(): string
     {
