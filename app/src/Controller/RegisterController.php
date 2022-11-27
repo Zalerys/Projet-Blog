@@ -19,7 +19,7 @@ class RegisterController extends AbstractController
     public function executeAdd()
     {
         $newUser = new User();
-        $username = $_POST["username"];
+        $username = $_POST["name"];
         $email = $_POST["email"];
         $password = hash("sha512", $_POST["password"]);
         $newUser->setName($username);
