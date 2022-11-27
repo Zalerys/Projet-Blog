@@ -25,6 +25,8 @@ class RegisterController extends AbstractController
         $newUser->setName($username);
         $newUser->setEmail($email);
         $newUser->setPassword($password);
+        $newUser->setProfilePicture(null);
+        $newUser->setBirthdate(null);
         $newUser->setRoleId('test');
         $manager = new UserManager(new PDOFactory());
         $manager->postUser($newUser);
