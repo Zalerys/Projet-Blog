@@ -24,21 +24,60 @@ class UserManager extends BaseManager
         return $users;
     }
 
-    public function getByUsername(string $username): ?User
+    /**
+     * @param string $name
+     * @return User[]
+     */
+    public function getUserByName(string $name): array
     {
         $query = $this->pdo->prepare("SELECT * FROM users WHERE name = :name");
-        $query->bindValue("username", $username, \PDO::PARAM_STR);
+        $query->bindValue("name", $name, \PDO::PARAM_STR);
         $query->execute();
-        $data = $query->fetch(\PDO::FETCH_ASSOC);
 
-        if ($data) {
-            return new User($data);
+        $users = [];
+
+        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $users[] = new User($data);
         }
 
-        return null;
+        return $users;
     }
 
-    public function postUser(User $user): ?User
+    /**
+     * @param string $id
+     * @return User
+     */
+    public function getUserById(string $id): User
+    {
+        $query = $this->pdo->prepare('SELECT * FROM users WHERE id = :id');
+        $query->bindValue('id', $id, \PDO::PARAM_STR);
+        $query->execute();
+
+        $data = $query->fetch(\PDO::FETCH_ASSOC);
+
+        return new User($data);
+    }
+
+    /**
+     * @param string $email
+     * @return User
+     */
+    public function getUserByEmail(string $email): User
+    {
+        $query = $this->pdo->prepare('SELECT * FROM users WHERE email = :email');
+        $query->bindValue('email', $email, \PDO::PARAM_STR);
+        $query->execute();
+
+        $data = $query->fetch(\PDO::FETCH_ASSOC);
+
+        return new User($data);
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function postUser(User $user): void
     {
         $query = $this->pdo->prepare(<<<EOT
             INSERT INTO users (role_id, email, name, password, profile_picture, birthdate) 
@@ -52,15 +91,17 @@ class UserManager extends BaseManager
         $query->bindValue('profile_picture', $user->getProfilePicture(), \PDO::PARAM_STR);
         $query->bindValue('birthdate', $user->getBirthdate(), \PDO::PARAM_STR);
         $query->execute();
-        header("Location: /home");
-        return null;
     }
 
+    /**
+     * @param User $user
+     * @return User|null
+     */
     public function checkUser(User $user): ?User
     {
-        $checking = $this->pdo->prepare("SELECT * FROM users WHERE name = :name and password = :password");
+        $checking = $this->pdo->prepare("SELECT * FROM users WHERE email = :email and password = :password");
 
-        $checking->bindValue("username", $user->getName(), PDO::PARAM_STR);
+        $checking->bindValue("email", $user->getEmail(), PDO::PARAM_STR);
         $checking->bindValue("password", $user->getPassword(), PDO::PARAM_STR);
         $checking->execute();
         $userFetch = $checking->fetch(PDO::FETCH_ASSOC);
@@ -71,5 +112,4 @@ class UserManager extends BaseManager
         }
         return null;
     }
-// Commentaire useless
 }

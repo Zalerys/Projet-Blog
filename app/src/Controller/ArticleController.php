@@ -18,34 +18,34 @@ class ArticleController extends AbstractController
             $allUser = new UserManager(new PDOFactory());
             $users = $allUser->getAllUsers();
             $manager = new ArticleManager(new PDOFactory());
-            $onePost = $manager->getArticle($id);
+            $onePost = $manager->getArticleById($id);
             $this->render("post.php", ["post" => $onePost, "users" => $users]);
         } else {
             header("Location: /login");
         }
     }
 
-    #[Route("/home/post/{id}", name: "modify", methods: ["POST"])]
-    public function modifyP(int $id)
-    {
-        $title = $_POST["title"];
-        $content = $_POST["content"];
-        $postModify = new Article();
-        $postModify->setTitle($title);
-        $postModify->setContent($content);
-        $postModify->setId($id);
-        $article= new ArticleManager(new PDOFactory());
-        $article->modifyPost($postModify);
-        header("Location: /home/post/${id}");
-    }
+    // #[Route("/home/post/{id}", name: "modify", methods: ["POST"])]
+    // public function modifyP(int $id)
+    // {
+    //     $title = $_POST["title"];
+    //     $content = $_POST["content"];
+    //     $articleModify = new Article();
+    //     $articleModify->setTitle($title);
+    //     $articleModify->setContent($content);
+    //     $articleModify->setId($id);
+    //     $article= new ArticleManager(new PDOFactory());
+    //     $article->editArticle($articleModify);
+    //     header("Location: /home/post/${id}");
+    // }
 
-    #[Route('/home/delete', name: "delete", methods: ["POST"])]
-    public function deletePost()
-    {
-        $postId = $_POST["postId"];
-        $deleteManager = new ArticleManager(new PDOFactory());
-        $postDelete = new Article();
-        $deleteManager->deletePost($postDelete->setPostId($postId));
-        header("Location: /home");
-    }
+    // #[Route('/home/delete', name: "delete", methods: ["POST"])]
+    // public function deletePost()
+    // {
+    //     $postId = $_POST["postId"];
+    //     $deleteManager = new ArticleManager(new PDOFactory());
+    //     $articleDelete = new Article();
+    //     $deleteManager->deleteArticle($articleDelete->setId($postId));
+    //     header("Location: /home");
+    // }
 }

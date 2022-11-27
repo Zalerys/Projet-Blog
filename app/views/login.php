@@ -1,9 +1,9 @@
 <div class="index">
     <section class="container container--sign-in">
         <form class="containerform" method="post">
-            <label class=" containerformlabel">
-                Username / Email
-                <input class="containerforminput" name="username" type="text" required>
+            <label class="containerformlabel">
+                Email
+                <input class="containerforminput" name="email" type="email" required>
             </label>
             <label class="containerformlabel">
                 Password

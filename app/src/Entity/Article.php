@@ -4,11 +4,11 @@ namespace App\Entity;
 
 class Article extends BaseEntity
 {
-    private string $id;
+    private ?string $id;
     private string $title;
     private string $content;
     private string $author_id;
-    private string $datetime;
+    private ?string $datetime;
 
     /**
      * @return string

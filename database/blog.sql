@@ -67,3 +67,13 @@ ALTER TABLE "responses_to_comment" ADD CONSTRAINT "responses_to_comment_fk0" FOR
 ALTER TABLE "responses_to_comment" ADD CONSTRAINT "responses_to_comment_fk1" FOREIGN KEY ("comment_id") REFERENCES "comments"("id");
 
 INSERT INTO "roles" (id, name) VALUES ('f18796b3-5081-4df7-b940-c3388964f85a', 'user');
+INSERT INTO "roles" (id, name) VALUES ('2b4b1e29-9ca7-484e-ac29-32bf390b26b9', 'admin');
+
+INSERT INTO "users" (id, role_id, email, name, password)
+VALUES (
+    '0b9987c0-68ca-4812-a2ce-55256c2d8a5b',
+    '2b4b1e29-9ca7-484e-ac29-32bf390b26b9',
+    'admin@email.com',
+    'admin',
+    '$2y$10$tyOB/idDIZ5TpRyWpyxfdeScNXdrvKIDEValGv9O06Gchbnk6RvdO' -- GustaveLeBest
+);
