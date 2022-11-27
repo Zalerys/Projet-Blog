@@ -17,7 +17,7 @@ class PostController extends AbstractController
 
         $this->render("home.php", [
             "posts" => $posts,
-            "trucs" => "je suis une string",
+            "trucs" => "test",
             "machin" => 42
         ], "Tous les posts");
     }
