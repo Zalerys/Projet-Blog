@@ -92,24 +92,4 @@ class UserManager extends BaseManager
         $query->bindValue('birthdate', $user->getBirthdate(), \PDO::PARAM_STR);
         $query->execute();
     }
-
-    /**
-     * @param User $user
-     * @return User|null
-     */
-    public function checkUser(User $user): ?User
-    {
-        $checking = $this->pdo->prepare("SELECT * FROM users WHERE email = :email and password = :password");
-
-        $checking->bindValue("email", $user->getEmail(), PDO::PARAM_STR);
-        $checking->bindValue("password", $user->getPassword(), PDO::PARAM_STR);
-        $checking->execute();
-        $userFetch = $checking->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["User"] = $userFetch;
-
-        if ($userFetch) {
-            return $user;
-        }
-        return null;
-    }
 }

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Factory\PdoFactory;
+use App\Factory\PDOFactory;
 use App\Manager\ArticleManager;
 use App\Route\Route;
 use App\Manager\UserManager;

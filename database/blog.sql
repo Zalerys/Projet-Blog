@@ -75,5 +75,5 @@ VALUES (
     '2b4b1e29-9ca7-484e-ac29-32bf390b26b9',
     'admin@email.com',
     'admin',
-    '$2y$10$tyOB/idDIZ5TpRyWpyxfdeScNXdrvKIDEValGv9O06Gchbnk6RvdO' -- GustaveLeBest
+    '$2y$10$tyOB/idDIZ5TpRyWpyxfdeScNXdrvKIDEValGv9O06Gchbnk6RvdO' -- password that match: GustaveLeBest
 );
