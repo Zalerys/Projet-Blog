@@ -21,7 +21,7 @@ class RegisterController extends AbstractController
         $newUser = new User();
         $username = $_POST["name"];
         $email = $_POST["email"];
-        $password = hash("sha1", $_POST["password"]);
+        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $newUser->setName($username);
         $newUser->setEmail($email);
         $newUser->setPassword($password);
