@@ -1,22 +1,32 @@
 # Projet-Blog
 
-## TODO
+## Context
 
-### Database
-- Creer la base de donées
-- Connecter PDO a la DB
+For the purpose of a school project, we have 2 weeks to create a blog in PHP using the MVC architecture.
 
-### Models
-- Creer la class Model
-- Creer la class Users
-- Creer la class Articles
-- Creer la class Comments
-- Creer la class Roles
+## Getting started
 
-### Controller
+To start the project you have to use docker.<br/>
+After cloning the project, enter this command from the terminal :
 
-### Route
+### `docker compose up -d`
 
-### View
+## For open the site
 
-### Front (facultatif)
+### `localhost:2020`
+
+## For open the database:
+
+Here is access for the database :
+
+System : PostgreSQL<br/>
+Server : db <br/>
+User : root<br/>
+Password : password<br/>
+Database : blog <br/>
+
+### `localhost:1010`
+
+## For access to adminer
+
+### `localhost:8080`
