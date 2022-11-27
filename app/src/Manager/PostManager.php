@@ -11,7 +11,7 @@ class PostManager extends BaseManager
      */
     public function getAllPosts(): array
     {
-        $query = $this->pdo->query("select * from Post");
+        $query = $this->pdo->query("select * from articles");
 
         $users = [];
 

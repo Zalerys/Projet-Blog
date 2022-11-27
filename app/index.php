@@ -1,8 +1,12 @@
 <?php
+require_once 'vendor/autoload.php';
 
 use App\Route\Route;
 
-require_once 'vendor/autoload.php';
+use App\Factory\PdoFactory;
+
+var_dump(new PdoFactory());
+
 
 $controllerDir = dirname(__FILE__) . '/src/Controller';
 $dirs = scandir($controllerDir);
