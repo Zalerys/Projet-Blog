@@ -13,7 +13,7 @@ class UserManager extends BaseManager
      */
     public function getAllUsers(): array
     {
-        $query = $this->pdo->query("select * from users");
+        $query = $this->pdo->query("SELECT * FROM users");
 
         $users = [];
 
@@ -38,28 +38,21 @@ class UserManager extends BaseManager
         return null;
     }
 
- public function insertUser(User $user)
-    {
-        $query = $this->pdo->prepare("INSERT INTO users (password, name), VALUES (:password, :name)");
-        $query->bindValue("password", $user->getHashedPassword(), \PDO::PARAM_STR);
-        $query->bindValue("name", $user->getName(), \PDO::PARAM_STR);
-        $query->execute();
-    }
-
-
     public function postUser(User $user): ?User
     {
-        $query = $this->pdo->prepare("SELECT * FROM users WHERE name = :name and password = :password");
-
+        $query = $this->pdo->prepare(<<<EOT
+            INSERT INTO users (role_id, email, name, password, profile_picture, birthdate) 
+            VALUES (:role_id, :email, :name, :password, :profile_picture, :birthdate)
+        EOT);
         session_start();
         $query->bindValue('role_id', $user->getRoleId(), \PDO::PARAM_STR);
         $query->bindValue('email', $user->getEmail(), \PDO::PARAM_STR);
         $query->bindValue('name', $user->getName(), \PDO::PARAM_STR);
         $query->bindValue('password', $user->getPassword(), \PDO::PARAM_STR);
-        $query->bindValue('datetime', $user->getDatetime(), \PDO::PARAM_STR);
-        $query->bindValue('profil_picture', $user->getProfilePicture(), \PDO::PARAM_STR);
+        $query->bindValue('profile_picture', $user->getProfilePicture(), \PDO::PARAM_STR);
         $query->bindValue('birthdate', $user->getBirthdate(), \PDO::PARAM_STR);
         $query->execute();
+
         $userFetch = $query->fetch(PDO::FETCH_ASSOC);
         $_SESSION["User"] = $userFetch;
 
@@ -84,5 +77,5 @@ class UserManager extends BaseManager
         }
         return null;
     }
-
+// Commentaire useless
 }

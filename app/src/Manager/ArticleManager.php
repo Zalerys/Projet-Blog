@@ -2,7 +2,7 @@
 
 namespace App\Manager;
 
-use App\Entity\ResponseToComment;
+use App\Entity\Article;
 
 class ArticleManager extends BaseManager
 {
@@ -11,14 +11,14 @@ class ArticleManager extends BaseManager
      */
     public function getAllPosts(): array
     {
-        $query = $this->pdo->query("select * from articles");
+        $query = $this->pdo->query("SELECT * FROM articles");
 
-        $users = [];
+        $article = [];
 
         while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
-            $users[] = new ResponseToComment($data);
+            $article[] = new Article($data);
         }
-        var_dump($users);
-        return $users;
+        var_dump($article);
+        return $article;
     }
 }
