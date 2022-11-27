@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface UserInterface
 {
-    public function getUsername(): string;
+    public function getName(): string;
 }

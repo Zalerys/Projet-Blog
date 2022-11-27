@@ -4,22 +4,22 @@ namespace App\Entity;
 
 class Role extends BaseEntity
 {
-    private int $id;
+    private string $id;
     private string $name;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return Role
      */
-    public function setId(int $id): Role
+    public function setId(string $id): Role
     {
         $this->id = $id;
         return $this;

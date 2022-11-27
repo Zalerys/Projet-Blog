@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Entity\ResponseToComment;
 
-class PostManager extends BaseManager
+class ArticleManager extends BaseManager
 {
     /**
      * @return ResponseToComment[]

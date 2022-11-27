@@ -4,61 +4,61 @@ namespace App\Entity;
 
 class Comment extends BaseEntity
 {
-    private int $id;
+    private string $id;
     private string $content;
-    private int $author_id;
-    private int $article_id;
+    private string $author_id;
+    private string $article_id;
     private string $datetime;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getArticleId(): int
+    public function getArticleId(): string
     {
         return $this->article_id;
     }
 
     /**
-     * @param int $article_id
+     * @param string $article_id
      * @return Comment
      */
-    public function setArticleId(int $article_id): Comment
+    public function setArticleId(string $article_id): Comment
     {
         $this->article_id = $article_id;
         return $this;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return Comment
      */
-    public function setId(int $id): Comment
+    public function setId(string $id): Comment
     {
         $this->id = $id;
         return $this;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getAuthorId(): int
+    public function getAuthorId(): string
     {
         return $this->author_id;
     }
 
     /**
-     * @param int $author_id
+     * @param string $author_id
      * @return Comment
      */
-    public function setAuthorId(int $author_id): Comment
+    public function setAuthorId(string $author_id): Comment
     {
         $this->author_id = $author_id;
         return $this;
