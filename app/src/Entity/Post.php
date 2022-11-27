@@ -20,9 +20,9 @@ class Post extends BaseEntity
 
     /**
      * @param int $id
-     * @return Post
+     * @return ResponseToComment
      */
-    public function setPostId(int $id): Post
+    public function setPostId(int $id): ResponseToComment
     {
         $this->id = $id;
         return $this;
@@ -38,16 +38,16 @@ class Post extends BaseEntity
 
     /**
      * @param string $content
-     * @return Post
+     * @return ResponseToComment
      */
 
-    public function setContent(string $content): Post
+    public function setContent(string $content): ResponseToComment
     {
         $this->content = $content;
         return $this;
     }
 
-    public function setPostAuthor(int $author_id): Post
+    public function setPostAuthor(int $author_id): ResponseToComment
     {
         $this->author = $author_id;
         return $this;
@@ -58,7 +58,7 @@ class Post extends BaseEntity
         return $this->author_id;
     }
 
-    public function setPostTitle(string $title): Post
+    public function setPostTitle(string $title): ResponseToComment
     {
         $this->title = $title;
         return $this;

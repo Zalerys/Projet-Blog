@@ -2,7 +2,7 @@
 <h1><?= $trucs; ?></h1>
 
 <?php
-/** @var App\Entity\Post[] $posts */
+/** @var App\Entity\ResponseToComment[] $posts */
 foreach ($posts as $post) {
     echo $post->getContent();
 }
