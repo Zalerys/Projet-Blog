@@ -10,11 +10,11 @@ CREATE TABLE IF NOT EXISTS "roles" (
 
 CREATE TABLE IF NOT EXISTS "users" (
     "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-    "role_id" VARCHAR(20) NOT NULL,
+    "role_id" uuid NOT NULL,
     "email" VARCHAR(255) NOT NULL UNIQUE,
     "name" VARCHAR(20) NOT NULL,
     "password" VARCHAR(20) NOT NULL,
-    "datetime" TIMESTAMP NOT NULL,
+    "datetime" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "profile_picture" VARCHAR(255),
     "birthdate" DATE,
     CONSTRAINT "users_pk" PRIMARY KEY ("id")
@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS "users" (
 
 CREATE TABLE IF NOT EXISTS "articles" (
     "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-    "author_id" VARCHAR(255) NOT NULL,
-    "title" VARCHAR(50) NOT NULL UNIQUE,
-    "datetime" TIMESTAMP NOT NULL,
+    "author_id" uuid NOT NULL,
+    "title" VARCHAR(255) NOT NULL UNIQUE,
+    "datetime" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "content" TEXT NOT NULL UNIQUE,
     CONSTRAINT "articles_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -35,9 +35,9 @@ CREATE TABLE IF NOT EXISTS "articles" (
 
 CREATE TABLE IF NOT EXISTS "comments" (
     "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-    "author_id" VARCHAR(255) NOT NULL,
-    "article_id" VARCHAR(255) NOT NULL,
-    "datetime" TIMESTAMP NOT NULL,
+    "author_id" uuid NOT NULL,
+    "article_id" uuid NOT NULL,
+    "datetime" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "content" TEXT NOT NULL,
     CONSTRAINT "comments_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -46,9 +46,9 @@ CREATE TABLE IF NOT EXISTS "comments" (
 
 CREATE TABLE IF NOT EXISTS "responses_to_comment" (
     "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-    "author_id" VARCHAR(255) NOT NULL,
-    "comment_id" VARCHAR(255) NOT NULL,
-    "datetime" TIMESTAMP NOT NULL,
+    "author_id" uuid NOT NULL,
+    "comment_id" uuid NOT NULL,
+    "datetime" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "content" TEXT NOT NULL,
     CONSTRAINT "responses_to_comment_pk" PRIMARY KEY ("id")
 ) WITH (
