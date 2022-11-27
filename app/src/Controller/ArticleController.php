@@ -16,7 +16,6 @@ class ArticleController extends AbstractController
          if (isset($_SESSION["User"])){
             session_destroy();
          }else {
-            echo "ok";
             header("Location: /login");
          }
 
