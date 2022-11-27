@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entities\Article;
 use App\Factory\PDOFactory;
 use App\Manager\ArticleManager;
 use App\Manager\UserManager;
@@ -9,35 +10,42 @@ use App\Route\Route;
 
 class ArticleController extends AbstractController
 {
-    #[Route('/', name: "homepage", methods: ["GET"])]
-    public function home()
+  #[Route("/home/post/{id}", name: "post", methods: ["GET"])]
+    public function post(int $id)
     {
         session_start();
-         if (isset($_SESSION["User"])){
-            session_destroy();
-         }else {
+        if (isset($_SESSION["User"])) {
+            $allUser = new UserManager(new PDOFactory());
+            $users = $allUser->getAllUsers();
+            $manager = new ArticleManager(new PDOFactory());
+            $onePost = $manager->getArticle($id);
+            $this->render("post.php", ["post" => $onePost, "users" => $users]);
+        } else {
             header("Location: /login");
-         }
-
-        $manger = new ArticleManager(new PDOFactory());
-        $posts = $manger->getAllPosts();
-
-        $this->render("home.php", [
-            "posts" => $posts,
-            "trucs" => "test",
-            "machin" => 42
-        ], "Tous les posts");
+        }
     }
 
-    /**
-     * @param $id
-     * @param $truc
-     * @param $machin
-     * @return void
-     */
-    #[Route('/post/{id}/{truc}/{machin}', name: "francis", methods: ["GET"])]
-    public function showOne($id, $truc, $machin)
+    #[Route("/home/post/{id}", name: "modify", methods: ["POST"])]
+    public function modifyP(int $id)
     {
-        var_dump($id, $truc);
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        $postModify = new Article();
+        $postModify->setTitle($title);
+        $postModify->setContent($content);
+        $postModify->setId($id);
+        $article= new ArticleManager(new PDOFactory());
+        $article->modifyPost($postModify);
+        header("Location: /home/post/${id}");
+    }
+
+    #[Route('/home/delete', name: "delete", methods: ["POST"])]
+    public function deletePost()
+    {
+        $postId = $_POST["postId"];
+        $deleteManager = new ArticleManager(new PDOFactory());
+        $postDelete = new Article();
+        $deleteManager->deletePost($postDelete->setPostId($postId));
+        header("Location: /home");
     }
 }
