@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS "users" (
     "id" uuid NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
     "role_id" uuid NOT NULL,
     "email" VARCHAR(255) NOT NULL UNIQUE,
-    "name" VARCHAR(20) NOT NULL,
-    "password" VARCHAR(20) NOT NULL,
+    "name" VARCHAR(255) NOT NULL,
+    "password" VARCHAR(255) NOT NULL,
     "datetime" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "profile_picture" VARCHAR(255),
     "birthdate" DATE,
@@ -65,3 +65,5 @@ ALTER TABLE "comments" ADD CONSTRAINT "comments_fk1" FOREIGN KEY ("article_id") 
 
 ALTER TABLE "responses_to_comment" ADD CONSTRAINT "responses_to_comment_fk0" FOREIGN KEY ("author_id") REFERENCES "users"("id");
 ALTER TABLE "responses_to_comment" ADD CONSTRAINT "responses_to_comment_fk1" FOREIGN KEY ("comment_id") REFERENCES "comments"("id");
+
+INSERT INTO "roles" (id, name) VALUES ('f18796b3-5081-4df7-b940-c3388964f85a', 'user');

@@ -22,11 +22,12 @@ class RegisterController extends AbstractController
         $username = $_POST["username"];
         $email = $_POST["email"];
         $password = hash("sha512", $_POST["password"]);
-        $admin = $_POST["admin"];
         $newUser->setName($username);
         $newUser->setEmail($email);
         $newUser->setPassword($password);
-        $newUser->setRoleId($admin);
+        $newUser->setRoleId('f18796b3-5081-4df7-b940-c3388964f85a');
+        $newUser->setProfilePicture(null);
+        $newUser->setBirthdate(null);
         $manager = new UserManager(new PDOFactory());
         $manager->postUser($newUser);
 
