@@ -12,6 +12,14 @@ class ArticleController extends AbstractController
     #[Route('/', name: "homepage", methods: ["GET"])]
     public function home()
     {
+        session_start();
+         if (isset($_SESSION["User"])){
+            session_destroy();
+         }else {
+            echo "ok";
+            header("Location: /login");
+         }
+
         $manger = new ArticleManager(new PDOFactory());
         $posts = $manger->getAllPosts();
 
