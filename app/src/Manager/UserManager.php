@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Entity\User;
+use PDO;
 
 class UserManager extends BaseManager
 {
@@ -98,9 +99,9 @@ class UserManager extends BaseManager
      */
     public function checkUser(User $user): ?User
     {
-        $checking = $this->pdo->prepare("SELECT * FROM users WHERE name = :name and password = :password");
+        $checking = $this->pdo->prepare("SELECT * FROM users WHERE email = :email and password = :password");
 
-        $checking->bindValue("username", $user->getName(), PDO::PARAM_STR);
+        $checking->bindValue("email", $user->getEmail(), PDO::PARAM_STR);
         $checking->bindValue("password", $user->getPassword(), PDO::PARAM_STR);
         $checking->execute();
         $userFetch = $checking->fetch(PDO::FETCH_ASSOC);

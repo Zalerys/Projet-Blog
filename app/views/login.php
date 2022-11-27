@@ -3,7 +3,7 @@
         <form class="containerform" method="post">
             <label class=" containerformlabel">
                 Username / Email
-                <input class="containerforminput" name="username" type="text" required>
+                <input class="containerforminput" name="email" type="text" required>
             </label>
             <label class="containerformlabel">
                 Password

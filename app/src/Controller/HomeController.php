@@ -32,23 +32,23 @@ class HomeController extends AbstractController
     public function posting()
     {
         session_start();
-        $newpost = new Article();
+        $newarticle = new Article();
 
         var_dump($_SESSION["User"]["userId"]);
         $userId = $_SESSION["User"]["userId"];
         $title = $_POST["title"];
         $content = $_POST["content"];
-        $newpost->setAuthorId($userId);
-        $newpost->setTitle($title);
-        $newpost->setContent($content);
+        $newarticle->setAuthorId($userId);
+        $newarticle->setTitle($title);
+        $newarticle->setContent($content);
         var_dump($title, $content);
         $manager = new ArticleManager(new PDOFactory());
-        $manager->postArticles($newpost);
-        $postManager = new Article(new PDOFactory());
-        $posts = $postManager->getAllArticles();
+        $manager->postArticle($newarticle);
+        $articleManager = new ArticleManager(new PDOFactory());
+        $articles = $articleManager->getAllArticles();
         $allUser = new UserManager(new PDOFactory());
         $users = $allUser->getAllUsers();
-        $this->render("home.php", ["posts" => $posts, "users" => $users], "Page d'accueil");
+        $this->render("home.php", ["posts" => $articles, "users" => $users], "Page d'accueil");
     }
     /**
      * @param $id
