@@ -2,12 +2,12 @@
 
 namespace App\Manager;
 
-use App\Entity\Post;
+use App\Entity\ResponseToComment;
 
 class PostManager extends BaseManager
 {
     /**
-     * @return Post[]
+     * @return ResponseToComment[]
      */
     public function getAllPosts(): array
     {
@@ -16,7 +16,7 @@ class PostManager extends BaseManager
         $users = [];
 
         while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
-            $users[] = new Post($data);
+            $users[] = new ResponseToComment($data);
         }
         var_dump($users);
         return $users;
