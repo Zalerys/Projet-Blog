@@ -77,5 +77,5 @@ class UserManager extends BaseManager
         }
         return null;
     }
-
+// Commentaire useless
 }
