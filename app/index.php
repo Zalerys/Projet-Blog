@@ -3,9 +3,9 @@ require_once 'vendor/autoload.php';
 
 use App\Route\Route;
 
-use App\Factory\PdoFactory;
+// use App\Factory\PdoFactory;
 
-var_dump(new PdoFactory());
+// var_dump(new PdoFactory());
 
 
 $controllerDir = dirname(__FILE__) . '/src/Controller';

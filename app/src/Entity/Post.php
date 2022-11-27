@@ -5,13 +5,15 @@ namespace App\Entity;
 class Post extends BaseEntity
 {
     private int $id;
+    private string $title;
     private string $content;
-    private int $author;
+    private int $author_id;
+    private $datetime;
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getPostId(): int
     {
         return $this->id;
     }
@@ -20,7 +22,7 @@ class Post extends BaseEntity
      * @param int $id
      * @return Post
      */
-    public function setId(int $id): Post
+    public function setPostId(int $id): Post
     {
         $this->id = $id;
         return $this;
@@ -29,7 +31,7 @@ class Post extends BaseEntity
     /**
      * @return string
      */
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }
@@ -38,27 +40,40 @@ class Post extends BaseEntity
      * @param string $content
      * @return Post
      */
+
     public function setContent(string $content): Post
     {
         $this->content = $content;
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getAuthor(): int
+    public function setPostAuthor(int $author_id): Post
     {
-        return $this->author;
-    }
-
-    /**
-     * @param int $author
-     * @return Post
-     */
-    public function setAuthor(int $author): Post
-    {
-        $this->author = $author;
+        $this->author = $author_id;
         return $this;
     }
+
+    public function getPostAuthor(): int
+    {
+        return $this->author_id;
+    }
+
+    public function setPostTitle(string $title): Post
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    public function getPostTitle(): string
+    {
+        return $this->title;
+    }
+
+
+    public function getPostDate()
+    {
+        return $this->datetime;
+    }
+
+
 }

@@ -18,7 +18,7 @@ class PostManager extends BaseManager
         while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
             $users[] = new Post($data);
         }
-
+        var_dump($users);
         return $users;
     }
 }
