@@ -13,12 +13,11 @@ class CommentManager extends BaseManager {
     public function postComment(Comment $comment): void
     {
         $query = $this->pdo->prepare(<<<EOT
-            INSERT INTO comments (author_id, article_id, datetime, content)
-            VALUES (:author_id, :article_id, :datetime, :content)
+            INSERT INTO comments (author_id, article_id, content)
+            VALUES (:author_id, :article_id, :content)
         EOT);
         $query->bindValue('author_id', $comment->getAuthorId(), \PDO::PARAM_STR);
         $query->bindValue('article_id', $comment->getArticleId(), \PDO::PARAM_STR);
-        $query->bindValue('datetime', $comment->getDatetime(), \PDO::PARAM_STR);
         $query->bindValue('content', $comment->getContent(), \PDO::PARAM_STR);
         $query->execute();
     }
