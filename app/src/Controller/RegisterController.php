@@ -14,17 +14,14 @@ class RegisterController extends AbstractController
     {
         $this->render("register.php", [], "Inscription");
     }
-    #[Route("/register", name: "register", methods: ["POST"])]
 
+    #[Route("/register", name: "register", methods: ["POST"])]
     public function executeAdd()
     {
         $newUser = new User();
-        $username = $_POST["name"];
-        $email = $_POST["email"];
-        $password = hash("sha1", $_POST["password"]);
-        $newUser->setName($username);
-        $newUser->setEmail($email);
-        $newUser->setPassword($password);
+        $newUser->setName($_POST["name"]);
+        $newUser->setEmail($_POST["email"]);
+        $newUser->setPassword(password_hash($_POST["password"], PASSWORD_DEFAULT));
         $newUser->setRoleId('f18796b3-5081-4df7-b940-c3388964f85a');
         $newUser->setProfilePicture(null);
         $newUser->setBirthdate(null);

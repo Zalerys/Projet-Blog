@@ -13,13 +13,6 @@
                 Password
                 <input class="containerforminput" name="password" type="password" required>
             </label>
-            <label class="containerformlabel">Admin
-                <span class=" containerform--checkbox">
-                    <input name="admin" type='hidden' value='0'>
-                    <input name="admin" type="checkbox" value="1">
-                    <span class="slider round"></span>
-                </span>
-            </label>
             <input class="containerformsubmit" name="submit" type="submit" value="SIGN UP">
         </form>
         <p>Already registered ? <a href="/login" class="underline">Log in</a></p>
