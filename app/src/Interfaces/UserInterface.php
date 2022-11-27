@@ -1,8 +1,0 @@
-<?php
-
-namespace App\Interfaces;
-
-interface UserInterface
-{
-    public function getName(): string;
-}
