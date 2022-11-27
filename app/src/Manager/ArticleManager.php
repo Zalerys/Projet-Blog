@@ -9,7 +9,7 @@ class ArticleManager extends BaseManager
     /**
      * @return ResponseToComment[]
      */
-    public function getAllPosts(): array
+    public function getAllArticles(): array
     {
         $query = $this->pdo->query("SELECT * FROM articles");
 

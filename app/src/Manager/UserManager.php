@@ -52,13 +52,7 @@ class UserManager extends BaseManager
         $query->bindValue('profile_picture', $user->getProfilePicture(), \PDO::PARAM_STR);
         $query->bindValue('birthdate', $user->getBirthdate(), \PDO::PARAM_STR);
         $query->execute();
-
-        $userFetch = $query->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["User"] = $userFetch;
-
-        if ($userFetch) {
-            return $user;
-        }
+        header("Location: /home");
         return null;
     }
 

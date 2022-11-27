@@ -20,7 +20,7 @@ class ArticleController extends AbstractController
          }
 
         $manger = new ArticleManager(new PDOFactory());
-        $posts = $manger->getAllPosts();
+        $posts = $manger->getAllArticles();
 
         $this->render("home.php", [
             "posts" => $posts,
